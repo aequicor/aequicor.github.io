@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме - Senior Android Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Современный анимированный градиент на фоне, чтобы подчеркнуть эффект стекла */
+            background: linear-gradient(-45deg, #4f46e5, #9333ea, #db2777, #ea580c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Утилита для эффекта стекла */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 1.5rem;
+        }
+
+        .glass-badge {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
+
+<!-- Главный контейнер -->
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- ЛЕВАЯ КОЛОНКА -->
+    <div class="space-y-6 lg:col-span-1">
+
+        <!-- Профиль -->
+        <div class="glass-card p-8 flex flex-col items-center text-center transition hover:-translate-y-1 duration-300">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-white/30 shadow-lg mb-4 bg-white/20 flex items-center justify-center">
+                <!-- Заглушка для фото. Вставь свой URL -->
+                <i data-lucide="user" class="w-16 h-16 text-white/70"></i>
+            </div>
+            <h1 class="text-2xl font-bold tracking-tight mb-1">Константин Ямшанов</h1>
+            <p class="text-white/80 font-medium mb-4">Мобильный разработчик (Android)</p>
+            <div class="flex items-center gap-2 text-sm text-white/70 bg-black/20 px-3 py-1.5 rounded-full">
+                <i data-lucide="map-pin" class="w-4 h-4"></i> Удаленно / Ижевск
+            </div>
+        </div>
+
+        <!-- Контакты -->
+        <div class="glass-card p-6">
+            <h2 class="text-xl font-semibold mb-4 border-b border-white/20 pb-2">Контакты</h2>
+            <ul class="space-y-4">
+                <li class="flex items-center gap-3 text-white/90 hover:text-white transition cursor-pointer">
+                    <div class="bg-white/10 p-2 rounded-lg"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                    <span>kyamshanov@vk.com</span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90 hover:text-white transition cursor-pointer">
+                    <div class="bg-white/10 p-2 rounded-lg"><i data-lucide="send" class="w-5 h-5"></i></div>
+                    <span>t.me/kyamshanov</span>
+                </li>
+                <li class="flex items-center gap-3 text-white/90 hover:text-white transition cursor-pointer">
+                    <div class="bg-white/10 p-2 rounded-lg"><i data-lucide="file-user" class="w-5 h-5"></i></div>
+                    <a href=" https://izhevsk.hh.ru/resume/ef8ae623ff0fd6d5330039ed1f34556f316532">
+                        <span>headhunter.ru</span>
+                    </a>
+                </li>
+                <li class="flex items-center gap-3 text-white/90 hover:text-white transition cursor-pointer">
+                    <div class="bg-white/10 p-2 rounded-lg"><i data-lucide="github" class="w-5 h-5"></i></div>
+                    <span>github.com/kruz18</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Навыки -->
+        <div class="glass-card p-6">
+            <h2 class="text-xl font-semibold mb-4 border-b border-white/20 pb-2">Hard Skills</h2>
+
+            <div class="mb-4">
+                <p class="text-xs text-white/60 uppercase tracking-wider mb-2">Core</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Kotlin</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Java</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Android SDK</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">JVM internals</span>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <p class="text-xs text-white/60 uppercase tracking-wider mb-2">Architecture</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Clean Architecture</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">MVI / MVVM</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">SOLID</span>
+                </div>
+            </div>
+
+            <div>
+                <p class="text-xs text-white/60 uppercase tracking-wider mb-2">Libraries</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Coroutines/Flow</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Dagger 2 / Koin</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">CameraX/Camera2</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Glide / Coil</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">Decompose</span>
+                    <span class="glass-badge px-3 py-1 rounded-full text-sm">FlowMVI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Софт скиллы / Образование -->
+        <div class="glass-card p-6">
+            <h2 class="text-xl font-semibold mb-4 border-b border-white/20 pb-2">Образование</h2>
+            <div class="space-y-3 text-sm text-white/90">
+                <div>
+                    <p class="font-semibold text-white">Высшее ИТ-образование</p>
+                    <p class="text-white/60">Информатика и вычислительная техника</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-white">Высшее менеджмент-образование</p>
+                    <p class="text-white/60">Стратегическое управление</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ПРАВАЯ КОЛОНКА -->
+    <div class="space-y-6 lg:col-span-2">
+
+        <!-- Обо мне -->
+        <div class="glass-card p-6 md:p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+                <i data-lucide="code-2" class="w-32 h-32"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="user-check" class="text-pink-300"></i> Обо мне
+            </h2>
+            <div class="space-y-4 text-white/90 leading-relaxed relative z-10">
+                <p>
+                    Бизнес-ориентированный мобильный разработчик под платформу андроид или кроссплатформа (KMP) с опытом
+                    создания высоконагруженных приложений. Имею опыт работы в крупных проектах с кодовой базой
+                    <strong>более 1 млн. строк кода</strong>.
+                </p>
+                <p>
+                    Благодаря длительному опыту в финтехе, пишу надежный, производительный и легко поддерживаемый код,
+                    уделяя особое внимание информационной безопасности. Понимаю работу продукта целиком. Наличие
+                    профильного образования в сфере менеджмента помогает мне эффективно декомпозировать крупные фичи,
+                    грамотно делегировать подзадачи и предсказуемо соблюдать сроки.
+                </p>
+            </div>
+        </div>
+
+        <!-- Опыт работы -->
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="briefcase" class="text-indigo-300"></i> Опыт работы
+            </h2>
+
+            <div class="relative border-l-2 border-white/20 pl-6 pb-2">
+                <div class="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-1 shadow-[0_0_10px_#fff]"></div>
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                    <h3 class="text-xl font-bold text-white">Старший разработчик ПО</h3>
+                    <span class="glass-badge px-3 py-1 rounded-full text-xs font-medium text-white/90 mt-2 md:mt-0">Авг 2021 — Настоящее время</span>
+                </div>
+                <p class="text-pink-200 font-medium mb-4">БСЦ Мск (Проект: ВТБ Онлайн) • Финтех</p>
+
+                <div class="space-y-4 text-white/90 text-sm md:text-base">
+                    <div>
+                        <p class="font-semibold text-white mb-2">Задачи и обязанности:</p>
+                        <ul class="list-none space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i>
+                                <span>Проектирование архитектуры и реализация новой функциональности мобильного банка.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i>
+                                <span>Проведение код-ревью, системный рефакторинг, написание unit-тестов.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i>
+                                <span>Управление кодом через систему Git и соблюдение требований информационной безопасности.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-green-300 shrink-0 mt-0.5"></i>
+                                <span>Участие в командных созвонах, проведение консультаций.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-black/20 p-4 rounded-xl border border-white/10 mt-4">
+                        <p class="font-semibold text-white mb-2 flex items-center gap-2">
+                            <i data-lucide="award" class="w-4 h-4 text-yellow-300"></i> Ключевые достижения:
+                        </p>
+                        <ul class="list-disc list-inside space-y-1 text-white/80">
+                            <li>С нуля разработал и внедрил модули: автоплатежей, оплаты мобильной связи, оплата по СБП
+                                без ошибок в ПРОДе.
+                            </li>
+                            <li> Разработка модуля Умной камеры и переноса платежей, с применением компьютерного зрения.
+                                Отмечу, что по данным MarksWebb банк отличился в высокой скоростью работы и функциональностью.
+                            </li>
+                            <li>Спроектировал отдельный командный модуль с современными инженерными практиками.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Пет-проекты -->
+        <div class="glass-card p-6 md:p-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="rocket" class="text-orange-300"></i> Open Source & Пет-проекты
+            </h2>
+
+            <div class="bg-white/5 border border-white/20 rounded-xl p-5 hover:bg-white/10 transition duration-300 group">
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-pink-300 transition">MissionChat</h3>
+                    <a href="https://github.com/kruz18/MissionChat" target="_blank"
+                       class="p-2 bg-white/10 rounded-full hover:bg-white/30 transition">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <p class="text-white/80 text-sm mb-4">
+                    Кроссплатформенное приложение для взаимодействия с LLM (в т.ч. DeepSeek API). Разработано для
+                    решения сложных архитектурных задач в свободное от коммерческой (NDA) разработки время.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-indigo-500/40 border border-indigo-300/30 px-2 py-1 rounded">Ktor</span>
+                    <span class="text-xs bg-indigo-500/40 border border-indigo-300/30 px-2 py-1 rounded">Decompose</span>
+                    <span class="text-xs bg-indigo-500/40 border border-indigo-300/30 px-2 py-1 rounded">FlowMVI</span>
+                    <span class="text-xs bg-indigo-500/40 border border-indigo-300/30 px-2 py-1 rounded">Koin</span>
+                </div>
+            </div>
+            <p class="text-xs text-white/50 mt-4 italic">
+                * Основная рабочая деятельность проходит под строгим NDA. Пет-проекты используются для тестирования и
+                внедрения передового стека.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Инициализация иконок
+    lucide.createIcons();
+</script>
+</body>
+</html>
