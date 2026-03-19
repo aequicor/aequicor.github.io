@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме | Ямшанов Константин | Android & KMP Developer</title>
+    <title id="page-title">Резюме</title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <style>
         :root {
@@ -167,20 +167,18 @@
         }
 
         .item {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid var(--line-color);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            align-items: center;
+            margin-bottom: 8px;
         }
 
         .item-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--heading-color);
         }
@@ -189,40 +187,75 @@
             font-size: 14px;
             color: var(--accent-gray);
             font-weight: 600;
+            background-color: var(--accent-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #bfdbfe;
         }
 
-        .item-subtitle {
+        .item-role {
             font-size: 16px;
             font-weight: 600;
             color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .item-description {
+            font-size: 15px;
+            color: var(--main-text);
             margin-bottom: 15px;
+            line-height: 1.6;
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-left: 3px solid #cbd5e1;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
         }
 
         .subsection-title {
             font-size: 14px;
             font-weight: 700;
             color: var(--heading-color);
-            margin-top: 15px;
-            margin-bottom: 8px;
+            margin-top: 18px;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: inline-block;
+            border-bottom: 2px solid var(--accent-light);
+            padding-bottom: 4px;
         }
 
         .item ul {
-            padding-left: 20px;
+            padding-left: 0;
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            list-style: none;
         }
 
         .item ul li {
             font-size: 14.5px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: var(--main-text);
+            position: relative;
+            padding-left: 18px;
+            line-height: 1.5;
+        }
+
+        /* Делаем маркеры тонкими линиями (тире) вместо жирных точек */
+        .item ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gray); /* Сделал цвет серым, чтобы он не так бросался в глаза */
         }
 
         .tag-container {
             margin-top: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .tag {
@@ -232,21 +265,51 @@
             border-radius: 6px;
             font-size: 12px;
             color: var(--accent-blue);
-            margin-right: 6px;
-            margin-bottom: 6px;
             font-weight: 500;
             border: 1px solid #bfdbfe;
         }
 
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-download:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-download:active {
+            transform: translateY(0);
+        }
+
+        .btn-download svg {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
 @media print {
-    /* Принудительно заставляем браузер применять фоновые цвета ко всем элементам */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
     body {
-        background: white; /* Делаем фон самой страницы белым, чтобы не тратить краску на поля */
+        background: white;
         margin: 0;
         padding: 0;
     }
@@ -264,7 +327,6 @@
         color: white !important;
     }
 
-    /* Возвращаем заливку для заголовков */
     .section-title {
         background-color: var(--accent-light) !important;
         border-left: 4px solid var(--accent-blue) !important;
@@ -272,10 +334,22 @@
         padding-left: 15px !important;
     }
 
-    /* Возвращаем заливку для тегов */
     .tag {
         background-color: var(--accent-light) !important;
         border: 1px solid #bfdbfe !important;
+    }
+
+    .item-date {
+        background-color: var(--accent-light) !important;
+        border: 1px solid #bfdbfe !important;
+    }
+
+    .item-description {
+        background-color: #f8fafc !important;
+    }
+
+    .downloads-section {
+        display: none !important;
     }
 }
     </style>
@@ -285,176 +359,191 @@
 <div class="resume-wrapper">
     <aside class="sidebar">
         <div class="photo-container">
-            <img src="photo_of_me.jpg" alt="Мое фото" class="photo">
+            <img id="photo" src="" alt="Мое фото" class="photo">
         </div>
 
-        <h3>Контакты</h3>
-        <ul class="contact-list">
-            <li><strong>Дата рождения</strong>06.09.2001</li>
-            <li><strong>Формат работы</strong>Удаленно / Готов к переезду / г. Ижевск</li>
-            <li><strong>Email</strong><a href="mailto:dev@example.com">kyamshanov@vk.com</a></li>
-            <li><strong>Telegram</strong><a href="#">t.me/kyamshanov</a></li>
-            <li><strong>GitHub</strong><a href="#">github.com/kruz18</a></li>
+        <h3 id="contacts-title"></h3>
+        <ul class="contact-list" id="contacts-list">
         </ul>
 
-        <h3>Hard Skills</h3>
-        <div class="skill-group">
-            <span class="skill-category">Языки программирования</span>
-            <span class="skill-items">Kotlin, Java, Swift </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">Architecture</span>
-            <span class="skill-items">Clean Architecture, MVI/MVVM, SOLID, DRY, Decompose</span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">Асинхронность</span>
-            <span class="skill-items">Coroutines, Flow, RxJava </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">UI</span>
-            <span class="skill-items">View, Jetpack Compose, Canvas </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">DI</span>
-            <span class="skill-items">Dagger 2, Hilt, Koin </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">Сеть & Безопасность</span>
-            <span class="skill-items">REST API, gRPC, WebSocket, SSL/TLS Pinning, SQLCipher, Ktor </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">Хранение и передача данных</span>
-            <span class="skill-items">SQLDelight, Room, kotlinx.serialization </span>
-        </div>
-        <div class="skill-group">
-            <span class="skill-category">Тестирование и Инфраструктура</span>
-            <span class="skill-items">JUnit, MockK, Espresso, Gradle, CI/CD, GitFlow </span>
+        <h3 id="education-title"></h3>
+        <ul class="contact-list" id="education-list">
+        </ul>
+
+        <h3 id="skills-title"></h3>
+        <div id="skills-list">
         </div>
 
-        <h3>Образование</h3>
-        <ul class="contact-list">
-            <li>
-                <strong>2023 — 2025</strong>
-                ИжГТУ имени М. Т. Калашникова<br>
-                Магистратура<br>
-                <em>Менеджмент (Стратегическое управление)</em>
-            </li>
-            <li>
-                <strong>2019 — 2023</strong>
-                ИжГТУ имени М. Т. Калашникова<br>
-                Бакалавриат<br>
-                <em>Информатика и вычислительная техника</em>
-            </li>
-        </ul>
     </aside>
 
     <main class="main-content">
         <div class="header">
-            <h1>Ямшанов Константин Алексеевич</h1>
-            <h2>Middle+ Android Developer / Kotlin Multiplatform</h2>
+            <h1 id="name"></h1>
+            <h2 id="role"></h2>
         </div>
 
-        <div class="section-title">Обо мне</div>
-        <p class="summary">
-            Инженер-программист с 7-летним опытом в IT, из которых более 5 лет специализируюсь на создании сложных Android-приложений в сфере финтеха. Эксперт в написании производительного, безопасного и масштабируемого кода.
-        </p>
-        <p class="summary">
-            Имею сильный продуктовый майндсет: активно участвую в проработке фич на стыке бизнес-требований, пользовательского опыта и технических ограничений. Обладаю опытом работы в сложных многомодульных проектах и кросс-функциональных командах. Умею брать на себя ответственность за архитектурные решения и доставку критичного функционала в срок.
-        </p>
+        <div class="section-title" id="about-title"></div>
+        <div id="about-list"></div>
 
-        <div class="section-title">Опыт работы</div>
+        <div class="section-title" id="experience-title"></div>
+        <div id="experience-list"></div>
 
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">ВТБ Онлайн</span>
-                <span class="item-date">2021 – настоящее время (5 лет)</span>
-            </div>
-            <div class="item-subtitle">Android Developer</div>
+        <div class="section-title" id="projects-title"></div>
+        <div id="projects-list"></div>
 
-            <div class="subsection-title">Технические результаты:</div>
-            <ul>
-                <li>Спроектировал с нуля и внедрил архитектуру важных финансовых модулей: оплата сотовой связи, автоплатежи. Обеспечил легкое масштабирование и быструю передачу кодовой базы новым командам.</li>
-                <li>Разработал комплексную архитектуру модулей работы с камерой и машинным распознаванием, включая баркоды, номера телефонов, банковские карты и реквизиты.</li>
-                <li>Создал «умную камеру» с высокопроизводительными кастомными анимациями на Canvas.</li>
-                <li>Использовал как опенсоурс бибилиотеки распознания, так и решения разработанные российскими компаниями.</li>
-                <li>Интегрировал систему оплаты через СБП, реализовав флоу со строгим соблюдением жестких требований регулятора.</li>
-                <li>Успешно проводил разработку и рефакторинг в масштабном проекте, состоящем из более чем 100 независимых модулей.</li>
-            </ul>
-
-            <div class="subsection-title">Бизнес-результаты:</div>
-            <ul>
-                <li>Вывел функционал сканирования QR и оплаты по фото в лидеры рынка по версии MarksWebb по скорости работы и предоставляемым возможностям.</li>
-                <li>Выступал связующим звеном в коммуникации между несколькими кросс-функциональными командами и внешними контрагентами.</li>
-                <li>Брал на себя техническое лидерство и ответственность за релиз критичного функционала в условиях жестких дедлайнов.</li>
-                <li>Инициировал улучшения архитектурных подходов и процессов разработки внутри команд.</li>
-            </ul>
-        </div>
-
-        <div class="item">
-            <div class="item-header">
-                <span class="item-title">Игровая платформа</span>
-                <span class="item-date">2019 – 2021</span>
-            </div>
-            <div class="item-subtitle">Java Developer</div>
-
-            <div class="subsection-title">Технические скилы:</div>
-            <ul>
-                <li>Проектировал и оптимизировал высоконагруженные системы на Java для обеспечения бесперебойной работы платформы при пиковых нагрузках.</li>
-                <li>Разработал уникальную систему динамической настройки игровых параметров в реальном времени через конфигурацию в Google Таблицах.</li>
-                <li>Создал собственный язык программирования для управления комплексными параметрами настроек.</li>
-                <li>Настраивал удаленные серверы, маршрутизацию и туннели (OpenVPN, SSH).</li>
-            </ul>
-
-            <div class="subsection-title">Бизнес скилы:</div>
-            <ul>
-                <li>Отвечал за поиск путей привлечения игроков, выявление их потребностей и повышение монетизации проекта.</li>
-                <li>С нуля организовал работу команды поддержки.</li>
-                <li>Активно участвовал в бизнес-планировании платформы.</li>
-            </ul>
-        </div>
-
-        <div class="section-title">Личные проекты</div>
-
-        <div class="item">
-            <div class="item-header" style="border-bottom: none; margin-bottom: 5px; padding-bottom: 0;">
-                <span class="item-title">MissionChat</span>
-            </div>
-            <div class="tag-container">
-                <span class="tag">Kotlin Multiplatform Engineer</span>
-                <span class="tag">Open-Source</span>
-                <span class="tag">Jetpack Compose</span>
-                <span class="tag">LLM</span>
-            </div>
-            <p class="summary">
-                Разработка с нуля open-source клиента для взаимодействия с LLM. Проект построен на передовом стеке KMP для Desktop, Android и iOS с использованием современных подходов к UI (Jetpack Compose / Compose Multiplatform).
-            </p>
-        </div>
-
-        <div class="item">
-            <div class="item-header" style="border-bottom: none; margin-bottom: 5px; padding-bottom: 0;">
-                <span class="item-title">Система управления проектами</span>
-            </div>
-            <div class="tag-container">
-                <span class="tag">Fullstack</span>
-                <span class="tag">Spring Boot</span>
-                <span class="tag">Android</span>
-            </div>
-            <p class="summary">
-                Разработка комплексной платформы для управления проектной деятельностью студентов в рамках бакалавриата (Spring Boot backend + нативное Android приложение).
-            </p>
-        </div>
-
-        <div class="tag-container" style="margin-top: 40px; border-top: 1px solid var(--line-color); padding-top: 20px;">
-            <a href="Резюме_Константин_Ямшанов.pdf" style="text-decoration: none;">
-                <span class="tag">Скачать в формате PDF</span>
-            </a>
-            <a href="Резюме_Константин_Ямшанов.png" style="text-decoration: none;">
-                <span class="tag">Скачать в формате PNG</span>
-            </a>
+        <div class="downloads-section" style="margin-top: 40px; border-top: 1px solid var(--line-color); padding-top: 25px;" id="downloads-list">
         </div>
     </main>
-
 </div>
 
+<script src="data.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("page-title").textContent = cvData.title;
+        document.getElementById("photo").src = cvData.photoUrl;
+
+        // Contacts
+        document.getElementById("contacts-title").textContent = cvData.contactsTitle;
+        const contactsList = document.getElementById("contacts-list");
+        cvData.contacts.forEach(contact => {
+            const li = document.createElement("li");
+            let valueHtml = contact.value;
+            if (contact.href) {
+                valueHtml = `<a href="${contact.href}">${contact.value}</a>`;
+            }
+            li.innerHTML = `<strong>${contact.label}</strong>${valueHtml}`;
+            contactsList.appendChild(li);
+        });
+
+        // Education
+        document.getElementById("education-title").textContent = cvData.educationTitle;
+        const educationList = document.getElementById("education-list");
+        cvData.education.forEach(edu => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <strong>${edu.years}</strong>
+                ${edu.institution}<br>
+                ${edu.level}<br>
+                <em>${edu.specialty}</em>
+            `;
+            educationList.appendChild(li);
+        });
+
+        // Skills
+        document.getElementById("skills-title").textContent = cvData.skillsTitle;
+        const skillsList = document.getElementById("skills-list");
+        cvData.skills.forEach(skill => {
+            const div = document.createElement("div");
+            div.className = "skill-group";
+            div.innerHTML = `
+                <span class="skill-category">${skill.category}</span>
+                <span class="skill-items">${skill.items}</span>
+            `;
+            skillsList.appendChild(div);
+        });
+
+        // Header
+        document.getElementById("name").textContent = cvData.name;
+        document.getElementById("role").textContent = cvData.role;
+
+        // About
+        document.getElementById("about-title").textContent = cvData.aboutTitle;
+        const aboutList = document.getElementById("about-list");
+        cvData.about.forEach(paragraph => {
+            const p = document.createElement("p");
+            p.className = "summary";
+            p.textContent = paragraph;
+            aboutList.appendChild(p);
+        });
+
+        // Experience
+        document.getElementById("experience-title").textContent = cvData.experienceTitle;
+        const experienceList = document.getElementById("experience-list");
+        cvData.experience.forEach(exp => {
+            const expDiv = document.createElement("div");
+            expDiv.className = "item";
+
+            // 1. Header (Company + Period)
+            let contentHtml = `
+                <div class="item-header">
+                    <span class="item-title">${exp.company}</span>
+                    <span class="item-date">${exp.period}</span>
+                </div>
+            `;
+
+            // 2. Role
+            contentHtml += `<span class="item-role">${exp.role}</span>`;
+
+            // 3. Tags (Stack)
+            if (exp.stack && exp.stack.length > 0) {
+                let tagsHtml = "";
+                exp.stack.forEach(tag => {
+                    tagsHtml += `<span class="tag">${tag}</span>`;
+                });
+                contentHtml += `<div class="tag-container">${tagsHtml}</div>`;
+            }
+
+            // 4. Description (optional)
+            if (exp.description) {
+                contentHtml += `<div class="item-description">${exp.description}</div>`;
+            }
+
+            // 5. Sections (Technical & Business Results)
+            exp.sections.forEach(sec => {
+                let itemsHtml = "";
+                sec.items.forEach(item => {
+                    itemsHtml += `<li>${item}</li>`;
+                });
+                contentHtml += `
+                    <div class="subsection-title">${sec.title}</div>
+                    <ul>${itemsHtml}</ul>
+                `;
+            });
+
+            expDiv.innerHTML = contentHtml;
+            experienceList.appendChild(expDiv);
+        });
+
+        // Projects
+        document.getElementById("projects-title").textContent = cvData.projectsTitle;
+        const projectsList = document.getElementById("projects-list");
+        cvData.projects.forEach(proj => {
+            const projDiv = document.createElement("div");
+            projDiv.className = "item";
+            projDiv.style.marginBottom = "30px";
+
+            let tagsHtml = "";
+            proj.tags.forEach(tag => {
+                tagsHtml += `<span class="tag">${tag}</span>`;
+            });
+
+            projDiv.innerHTML = `
+                <div class="item-title" style="margin-bottom: 8px;">${proj.title}</div>
+                <div class="tag-container" style="margin-bottom: 12px;">
+                    ${tagsHtml}
+                </div>
+                <p class="summary" style="margin-bottom: 0;">
+                    ${proj.description}
+                </p>
+            `;
+            projectsList.appendChild(projDiv);
+        });
+
+        // Downloads
+        const downloadsList = document.getElementById("downloads-list");
+        cvData.downloads.forEach(dl => {
+            const a = document.createElement("a");
+            a.href = dl.url;
+            a.className = "btn-download";
+            a.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                ${dl.text}
+            `;
+            downloadsList.appendChild(a);
+        });
+    });
+</script>
 </body>
 </html>
