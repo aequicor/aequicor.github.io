@@ -76,7 +76,7 @@ const cvData = {
         },
         {
             company: "Игровая платформа",
-            period: "2019 – 2021",
+            period: "2019 – 2021 (3 года)",
             role: "Java Developer",
             stack: ["Java", "Netty", "CompletableFuture" , "MongoDB", "PostgreSQL", "Google Sheets API", "Linux", "OpenVPN"],
             description: "Создание и развитие игровой платформы. Проектирование серверной архитектуры, разработка систем управления конфигурацией и поддержка инфраструктуры.",
