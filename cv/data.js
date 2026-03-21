@@ -7,7 +7,7 @@ const cvData = {
         { label: "Формат работы", value: "Удаленно / Готов к переезду / г. Ижевск", href: null },
         { label: "Email", value: "kyamshanov@vk.com", href: "mailto:kyamshanov@vk.com" },
         { label: "Telegram", value: "t.me/kyamshanov", href: "https://t.me/kyamshanov" },
-        { label: "GitHub", value: "github.com/kruz18", href: "http://github.com/aequicor" }
+        { label: "GitHub", value: "github.com/aequicor", href: "http://github.com/aequicor" }
     ],
     educationTitle: "Образование",
     education: [
@@ -40,7 +40,8 @@ const cvData = {
     aboutTitle: "Обо мне",
     about: [
         "Инженер-программист с 7-летним опытом в IT, из которых более 5 лет специализируюсь на создании сложных Android-приложений в сфере финтеха. Эксперт в написании производительного, безопасного и масштабируемого кода.",
-        "Имею сильный продуктовый майндсет: активно участвую в проработке фич на стыке бизнес-требований, пользовательского опыта и технических ограничений. Обладаю опытом работы в сложных многомодульных проектах и кросс-функциональных командах. Умею брать на себя ответственность за архитектурные решения и доставку критичного функционала в срок."
+        "Имею сильный продуктовый майндсет: активно участвую в проработке фич на стыке бизнес-требований, пользовательского опыта и технических ограничений. Обладаю опытом работы в сложных многомодульных проектах и кросс-функциональных командах. Умею брать на себя ответственность за архитектурные решения и доставку критичного функционала в срок.",
+        "Ценю здоровую инженерную культуру и выстраиваю прозрачную коммуникацию в команде. Делюсь экспертизой через онбординг, ревью и консультации. Работаю самостоятельно, но вовремя эскалирую проблемы: запрашиваю помощь команды только при возникновении тупиковых ситуаций или когда необходимо экстренное исправление."
     ],
     experienceTitle: "Опыт работы",
     experience: [
@@ -48,7 +49,7 @@ const cvData = {
             company: "БСЦ Мск. Проект - ВТБ Онлайн",
             period: "2021 – настоящее время (5 лет)",
             role: "Android Developer",
-            stack: ["Kotlin", "Android SDK", "MVVM", "Coroutines", "Flow", "Dagger 2", "RxJava", "Canvas", "Room"],
+            stack: ["Kotlin", "Android SDK", "MVVM", "Coroutines", "Flow", "Dagger 2", "RxJava", "MlKit", "ZXing", "SmartEngine", "CameraX", "Canvas", "View", "Compose", "OkHttp", "Clean architecture", "Feature-based architecture", "Gradle"],
             description: "Разработка и поддержка ключевых финансовых сервисов в мобильном приложении. Проектирование архитектуры и внедрение новых технологических решений.",
             sections: [
                 {
@@ -77,7 +78,7 @@ const cvData = {
             company: "Игровая платформа",
             period: "2019 – 2021",
             role: "Java Developer",
-            stack: ["Java", "Networking", "Multithreading", "Google Sheets API", "Linux", "OpenVPN"],
+            stack: ["Java", "Netty", "CompletableFuture" , "MongoDB", "PostgreSQL", "Google Sheets API", "Linux", "OpenVPN"],
             description: "Создание и развитие игровой платформы. Проектирование серверной архитектуры, разработка систем управления конфигурацией и поддержка инфраструктуры.",
             sections: [
                 {
@@ -104,12 +105,12 @@ const cvData = {
     projects: [
         {
             title: "MissionChat",
-            tags: ["Kotlin Multiplatform Engineer", "Open-Source", "Jetpack Compose", "LLM"],
-            description: "Разработка с нуля open-source клиента для взаимодействия с LLM. Проект построен на передовом стеке KMP для Desktop, Android и iOS с использованием современных подходов к UI (Jetpack Compose / Compose Multiplatform)."
+            tags: ["Kotlin Multiplatform", "Compose Multiplatform", "OpenAI API", "Koin", "Ktor", "Decompose", "FlowMVI", "Room", "Clean architecture", "Gradle kts"],
+            description: "Разработка с нуля open-source клиента для взаимодействия с LLM. Проект построен на передовом стеке KMP для Desktop, Android и iOS с использованием современных подходов к UI (Compose Multiplatform)."
         },
         {
             title: "Система управления проектами",
-            tags: ["Fullstack", "Spring Boot", "Android"],
+            tags: ["Kotlin", "Spring Boot", "Spring Security", "Spring Data", "JWT", "PostgresSQL", "Docker", "docker-compose", "Kubernetes", "Coroutines", "Android SDK", "Jetpack compose", "SQLDelight", "Ktor", "Decompose"],
             description: "Разработка комплексной платформы для управления проектной деятельностью студентов в рамках бакалавриата (Spring Boot backend + нативное Android приложение)."
         }
     ],
