@@ -370,6 +370,10 @@
         <ul class="contact-list" id="education-list">
         </ul>
 
+        <h3 id="courses-title"></h3>
+        <ul class="contact-list" id="courses-list">
+        </ul>
+
         <h3 id="skills-title"></h3>
         <div id="skills-list">
         </div>
@@ -428,6 +432,17 @@
             `;
             educationList.appendChild(li);
         });
+
+        // Courses
+        if (cvData.courses && cvData.courses.length) {
+            document.getElementById("courses-title").textContent = cvData.coursesTitle;
+            const coursesList = document.getElementById("courses-list");
+            cvData.courses.forEach(course => {
+                const li = document.createElement("li");
+                li.innerHTML = `<strong>${course.year}</strong>${course.name}`;
+                coursesList.appendChild(li);
+            });
+        }
 
         // Skills
         document.getElementById("skills-title").textContent = cvData.skillsTitle;
