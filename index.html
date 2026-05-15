@@ -5,103 +5,288 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="yandex-verification" content="9886ccace3882142"/>
     <meta name="google-site-verification" content="nwXDzG4ZzFKAlEa8ksO_vTuqB6IQNeyT0bVfWdoeESQ"/>
-    <title>Мои мысли | My Thoughts</title>
+    <title>Aequicor | Эквико́р</title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <link rel="shortcut icon" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
-    <meta property="og:title" content="Мои мысли | My Thoughts">
-    <meta property="og:description" content="Всё чаще ловлю себя на мысли, что хочется создавать что-то новое, то, что находит отклик в своём и чужих сердцах.">
-    <meta property="og:image" content="https://kruz18.github.io/img/preview_tg.png">
-    <meta property="og:url" content="https://kruz18.github.io">
+    <meta property="og:title" content="Aequicor | Эквико́р">
+    <meta property="og:description" content="Сайт-визитка: мысли, резюме и флагманские разработки — ai-kit-v2, KnowledgeOS, NotePen, CommunismPlugin.">
+    <meta property="og:image" content="https://aequicor.github.io/img/preview_tg.png">
+    <meta property="og:url" content="https://aequicor.github.io">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="KRUZ18">
-    <meta name="title" content="Мои мысли. My Thoughts.">
-    <meta name="description" content="Мои мысли. My Thoughts. KRUZ18">
+    <meta property="og:site_name" content="Aequicor">
+    <meta name="title" content="Aequicor | Эквико́р">
+    <meta name="description" content="Сайт-визитка Константина Ямшанова: мысли, CV и флагманские разработки.">
 </head>
 <body>
-<header>
-    <img src="/img/me.jpg" alt="Мое фото | My photo" class="profile-img">
-    <h1>Мои мысли. My Thoughts.</h1>
+<div class="lang-switch" role="group" aria-label="Language">
+    <button type="button" data-lang="ru" class="active">RU</button>
+    <button type="button" data-lang="en">EN</button>
+</div>
+
+<header class="hero">
+    <img src="/img/me.jpg" alt="Aequicor" class="profile-img">
+    <h1 class="name-swap" aria-label="Aequicor | Эквико́р">
+        <span class="name-slot" id="name-slot">Aequicor | Эквико́р</span>
+    </h1>
+    <p class="tagline">
+        <span id="typed"></span><span class="cursor">▍</span>
+    </p>
+    <div class="hero-links">
+        <a href="https://github.com/aequicor" target="_blank">GitHub</a>
+        <a href="https://t.me/aequicor" target="_blank">Telegram</a>
+    </div>
 </header>
 
-<div class="section">
-    <h2>
-        <a href="https://github.com/KRUZ18"
-           style="color: #3498db; text-decoration: none; font-style: italic;">
-            by Kruzo
+<canvas id="bg-canvas"></canvas>
+
+<section class="section">
+    <h2 data-i18n="sections">Разделы</h2>
+    <div class="card-grid">
+        <a class="card reveal" href="/thoughts/">
+            <span class="card-icon">✦</span>
+            <h3 data-i18n="thoughts_title">Мои мысли</h3>
+            <p data-i18n="thoughts_desc">Мысли, заметки и идеи о разработке, архитектуре и жизни.</p>
         </a>
-    </h2>
-
-    <div class="language-block">
-        <p>Всё чаще ловлю себя на мысли, что хочется создавать что-то новое — не просто ради новизны, а что-то близкое,
-            понятное, то, что находит отклик.</p>
-
-        <p>Каждый идёт своим путём, и у каждого своё восприятие вещей. Я — не исключение. Работая, я постоянно
-            сталкиваюсь с тем, что раздражает, что кажется нелогичным или неудобным. Возможно, к счастью, а возможно, к
-            сожалению, я не могу просто принять это и двигаться дальше. Вместо этого я пытаюсь выстроить свою систему —
-            такую, в которой можно работать комфортно, не отвергая окружающую реальность, но и не подстраиваясь слепо
-            под неё.</p>
-
-        <p>Здесь я собираю мысли, идеи и решения — иногда сырые, иногда почти готовые. Возможно, они пригодятся мне
-            позже, когда взгляд на вещи изменится. А может, они окажутся полезными кому-то ещё — тем, кто чувствует то
-            же самое.</p>
-
-        <p>Всё, что будет здесь — часть моей публичной IT-сферы. GitHub — моя профессиональная летопись. Каждый коммит,
-            даже неловкий, показывает, как я учился. Соцсети так не умеют.</p>
-
-        <div class="discussion-links">
-            <p>Присоединится к обсуждению:</p>
-            <a href="https://t.me/KRUZ18_tg" target="_blank">[TG]</a>
-        </div>
+        <a class="card reveal" href="/cv/">
+            <span class="card-icon">⌬</span>
+            <h3 data-i18n="cv_title">Резюме</h3>
+            <p data-i18n="cv_desc">Резюме и профессиональный путь.</p>
+        </a>
     </div>
+</section>
 
-    <div class="divider">———</div>
-
-    <div class="language-block">
-        <p>I increasingly find myself wanting to create something new — not just for novelty's sake, but something
-            familiar, understandable, something that resonates.</p>
-
-        <p>Everyone walks their own path with their own perception of things. I'm no exception. At work, I constantly
-            encounter things that irritate me, that seem illogical or inconvenient. Perhaps fortunately, or perhaps
-            unfortunately, I can't simply accept it and move on. Instead, I try to build my own system — one where I can
-            work comfortably, without rejecting the surrounding reality, yet without blindly conforming to it
-            either.</p>
-
-        <p>Here I collect thoughts, ideas and solutions — sometimes raw, sometimes nearly complete. They might prove
-            useful to me later when my perspective changes. Or perhaps they'll be helpful to others who feel the same
-            way.</p>
-
-        <p>Everything here will be part of my public IT sphere. GitHub is my professional chronicle. Every commit, even
-            the awkward ones, shows how I learned. Social media can’t do that.</p>
-
-
-        <div class="discussion-links">
-            <p>Join the discussion:</p>
-            <a href="https://t.me/KRUZ18_tg" target="_blank">[TG]</a>
-        </div>
+<section class="section">
+    <h2 data-i18n="projects">Флагманские разработки</h2>
+    <div class="card-grid">
+        <a class="card project-card reveal" href="https://github.com/aequicor/ai-kit-v2" target="_blank">
+            <span class="card-icon">🤖</span>
+            <h3>ai-kit-v2</h3>
+            <p data-i18n="aikit_desc">Набор инструментов для работы с ИИ — модульный, расширяемый, под мои задачи.</p>
+            <span class="card-meta">GitHub →</span>
+        </a>
+        <a class="card project-card reveal" href="https://github.com/aequicor/KnowledgeOS" target="_blank">
+            <span class="card-icon">🧠</span>
+            <h3>KnowledgeOS</h3>
+            <p data-i18n="kos_desc">Операционная система знаний: организация информации как живой структуры.</p>
+            <span class="card-meta">GitHub →</span>
+        </a>
+        <a class="card project-card reveal" href="https://github.com/aequicor/NotePen" target="_blank">
+            <span class="card-icon">✎</span>
+            <h3>NotePen</h3>
+            <p data-i18n="notepen_desc">Инструмент для заметок с фокусом на интерфейс и скорость мысли.</p>
+            <span class="card-meta">GitHub →</span>
+        </a>
+        <a class="card project-card reveal" href="https://github.com/aequicor/CommunismPlugin" target="_blank">
+            <span class="card-icon">★</span>
+            <h3>CommunismPlugin</h3>
+            <p data-i18n="communism_desc">Плагин с авторской философией — экспериментальная разработка.</p>
+            <span class="card-meta">GitHub →</span>
+        </a>
     </div>
-</div>
-
-<div class="section">
-    <h2>Заметки | Notes</h2>
-    <ul class="notes-list">
-        <li><a href="/article/interfaceFirst">Сначала интерфейс потом код | Interface first then code</a></li>
-        <li><a href="/article/philosophyOfProcess">Философия процесса: почему путь важнее цели | The Philosophy of
-            Process: Why the Journey Matters More Than the Destination</a></li>
-        <li><a href="/article/blocVsClean">Почему BLoC актуален, а чистая архитектура устаревает | Why BLoC matters
-            while clean architecture fades</a></li>
-        <li><a href="/article/palette">Важность палитры в бренде KRUZ18 | Color Palette Importance in KRUZ18 Brand</a>
-        </li>
-        <li><a href="/article/depression">Взаимосвязь между депрессией, прокрастинацией, ленью и выгоранием |
-            Interrelationship between Depression, Procrastination, Laziness and Burnout</a></li>
-        <li><a href="/article/marketingTexts">Особенности применения маркетинга при написании медийных постов | Features of marketing application in creating media posts</a></li>
-        <li><a href="/article/squidGame">Общественные пороки в сериале «Игра в кальмара» | Social vices in the "Squid Game" series</a></li>
-    </ul>
-</div>
+</section>
 
 <footer>
-    <p>© 2025 Deep in thought</p>
+    <p>© 2025 Aequicor · <a href="https://github.com/aequicor">github.com/aequicor</a></p>
 </footer>
+
+<script>
+(function () {
+    const I18N = {
+        ru: {
+            sections: 'Разделы',
+            projects: 'Флагманские разработки',
+            thoughts_title: 'Мои мысли',
+            thoughts_desc: 'Мысли, заметки и идеи о разработке, архитектуре и жизни.',
+            cv_title: 'Резюме',
+            cv_desc: 'Резюме и профессиональный путь.',
+            aikit_desc: 'Набор инструментов для работы с ИИ — модульный, расширяемый, под мои задачи.',
+            kos_desc: 'Операционная система знаний: организация информации как живой структуры.',
+            notepen_desc: 'Инструмент для заметок с фокусом на интерфейс и скорость мысли.',
+            communism_desc: 'Плагин с авторской философией — экспериментальная разработка.',
+            tagline: 'Оператор ЭВМ. И просто хороший человек.',
+            names: ['Aequicor | Эквико́р', 'Константин Ямшанов']
+        },
+        en: {
+            sections: 'Sections',
+            projects: 'Flagship Projects',
+            thoughts_title: 'My Thoughts',
+            thoughts_desc: 'Thoughts, notes and ideas on development, architecture and life.',
+            cv_title: 'CV',
+            cv_desc: 'Resume and professional path.',
+            aikit_desc: 'A toolkit for AI work — modular, extensible, tailored to my tasks.',
+            kos_desc: 'A knowledge OS: organizing information as a living structure.',
+            notepen_desc: 'A notes tool focused on UI and the speed of thought.',
+            communism_desc: 'A plugin with an authorial philosophy — experimental.',
+            tagline: 'Computer operator. And just a good person.',
+            names: ['Aequicor | Aequicor', 'Konstantin Yamshanov']
+        }
+    };
+
+    let lang = localStorage.getItem('lang') || (navigator.language || 'ru').slice(0, 2);
+    if (!I18N[lang]) lang = 'ru';
+
+    function applyLang() {
+        const dict = I18N[lang];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(node => {
+            const key = node.getAttribute('data-i18n');
+            if (dict[key]) node.textContent = dict[key];
+        });
+        document.querySelectorAll('.lang-switch button').forEach(b => {
+            b.classList.toggle('active', b.dataset.lang === lang);
+        });
+        ci = 0; deleting = false; pi = 0;
+        names = dict.names;
+        ni = 0;
+        nameSlot.innerHTML = names[0];
+    }
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            lang = btn.dataset.lang;
+            localStorage.setItem('lang', lang);
+            applyLang();
+        });
+    });
+
+    const el = document.getElementById('typed');
+    let pi = 0, ci = 0, deleting = false;
+
+    function tick() {
+        const full = I18N[lang].tagline;
+        if (!deleting) {
+            ci++;
+            el.textContent = full.slice(0, ci);
+            if (ci === full.length) {
+                deleting = true;
+                return setTimeout(tick, 2500);
+            }
+            setTimeout(tick, 55 + Math.random() * 40);
+        } else {
+            ci--;
+            el.textContent = full.slice(0, ci);
+            if (ci === 0) {
+                deleting = false;
+                return setTimeout(tick, 600);
+            }
+            setTimeout(tick, 25);
+        }
+    }
+    const nameSlot = document.getElementById('name-slot');
+    let names = I18N[lang].names;
+    let ni = 0;
+    setInterval(() => {
+        nameSlot.classList.add('swap-out');
+        setTimeout(() => {
+            ni = (ni + 1) % names.length;
+            nameSlot.innerHTML = names[ni];
+            nameSlot.classList.remove('swap-out');
+            nameSlot.classList.add('swap-in');
+            setTimeout(() => nameSlot.classList.remove('swap-in'), 500);
+        }, 400);
+    }, 3500);
+
+    applyLang();
+    tick();
+
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, dots, raf;
+    const DPR = window.devicePixelRatio || 1;
+
+    function resize() {
+        w = canvas.width = window.innerWidth * DPR;
+        h = canvas.height = window.innerHeight * DPR;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        const count = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+        dots = Array.from({ length: count }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.3 * DPR,
+            vy: (Math.random() - 0.5) * 0.3 * DPR,
+            r: (1 + Math.random() * 1.5) * DPR
+        }));
+    }
+
+    const mouse = { x: -9999, y: -9999 };
+    window.addEventListener('mousemove', e => {
+        mouse.x = e.clientX * DPR;
+        mouse.y = e.clientY * DPR;
+    });
+    window.addEventListener('mouseleave', () => {
+        mouse.x = mouse.y = -9999;
+    });
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const d of dots) {
+            d.x += d.vx; d.y += d.vy;
+            if (d.x < 0 || d.x > w) d.vx *= -1;
+            if (d.y < 0 || d.y > h) d.vy *= -1;
+
+            const dx = d.x - mouse.x, dy = d.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120 * DPR) {
+                const push = (120 * DPR - dist) / (120 * DPR);
+                d.x += (dx / dist) * push * 1.5;
+                d.y += (dy / dist) * push * 1.5;
+            }
+
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.55)';
+            ctx.fill();
+        }
+        for (let i = 0; i < dots.length; i++) {
+            for (let j = i + 1; j < dots.length; j++) {
+                const a = dots[i], b = dots[j];
+                const dx = a.x - b.x, dy = a.y - b.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 110 * DPR) {
+                    ctx.strokeStyle = `rgba(52, 152, 219, ${0.2 * (1 - dist / (110 * DPR))})`;
+                    ctx.lineWidth = DPR;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        raf = requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    draw();
+
+    const io = new IntersectionObserver(entries => {
+        for (const e of entries) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        }
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = e.clientX - r.left, y = e.clientY - r.top;
+            const rx = ((y / r.height) - 0.5) * -6;
+            const ry = ((x / r.width) - 0.5) * 6;
+            card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+            card.style.setProperty('--mx', `${x}px`);
+            card.style.setProperty('--my', `${y}px`);
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+})();
+</script>
 </body>
 </html>
