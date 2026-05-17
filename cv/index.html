@@ -3,71 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Резюме</title>
+    <title>Резюме | Ямшанов Константин | Senior Android Developer</title>
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <style>
         :root {
-            --sidebar-bg: #1e293b;
-            --sidebar-text: #f8fafc;
+            --sidebar-bg: #1f2937;
+            --sidebar-text: #e5e7eb;
+            --sidebar-muted: #9ca3af;
+            --sidebar-divider: #374151;
             --main-bg: #ffffff;
-            --main-text: #334155;
+            --main-text: #1f2937;
+            --muted-text: #4b5563;
             --heading-color: #0f172a;
-            --accent-blue: #2563eb;
-            --accent-light: #eff6ff;
-            --accent-gray: #64748b;
-            --line-color: #cbd5e1;
+            --accent: #1e3a8a;
+            --accent-soft: #f3f4f6;
+            --line-color: #e5e7eb;
+            --page-bg: #f5f5f5;
         }
 
+        * { box-sizing: border-box; }
+
+        html, body { margin: 0; padding: 0; }
+
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f1f5f9;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--page-bg);
+            line-height: 1.55;
             color: var(--main-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .resume-wrapper {
             max-width: 1100px;
-            margin: 40px auto;
+            margin: 32px auto;
             display: flex;
             background: var(--main-bg);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border-radius: 8px;
-            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+            border: 1px solid var(--line-color);
         }
 
         /* --- SIDEBAR --- */
         .sidebar {
-            width: 32%;
+            width: 34%;
+            min-width: 0;
             background-color: var(--sidebar-bg);
             color: var(--sidebar-text);
-            padding: 40px 30px;
-            box-sizing: border-box;
+            padding: 40px 28px;
         }
 
         .photo-container {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         .photo {
-            width: 170px;
-            height: 170px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent-blue);
+            border: 2px solid var(--sidebar-divider);
         }
 
         .sidebar h3 {
-            font-size: 15px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 2px solid #334155;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--sidebar-divider);
             padding-bottom: 8px;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            color: #93c5fd;
+            margin: 32px 0 14px;
+            color: #ffffff;
             font-weight: 600;
         }
 
@@ -78,181 +83,183 @@
         }
 
         .contact-list li {
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 13.5px;
+            margin-bottom: 14px;
             display: flex;
             flex-direction: column;
+            word-break: break-word;
         }
 
         .contact-list strong {
-            color: #94a3b8;
-            font-size: 12px;
+            color: var(--sidebar-muted);
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            letter-spacing: 0.8px;
+            margin-bottom: 3px;
+            font-weight: 600;
         }
 
         .contact-list a {
             color: var(--sidebar-text);
             text-decoration: none;
-            transition: color 0.2s;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
         }
 
         .contact-list a:hover {
-            color: #93c5fd;
+            border-bottom-color: var(--sidebar-text);
         }
 
         .skill-group {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .skill-category {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            color: #94a3b8;
-            font-weight: 700;
+            color: var(--sidebar-muted);
+            font-weight: 600;
             display: block;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            letter-spacing: 0.8px;
         }
 
         .skill-items {
-            font-size: 14px;
+            font-size: 13.5px;
             line-height: 1.5;
-            color: #f1f5f9;
+            color: var(--sidebar-text);
         }
 
         /* --- MAIN CONTENT --- */
         .main-content {
-            width: 68%;
-            padding: 50px;
-            box-sizing: border-box;
+            width: 66%;
+            min-width: 0;
+            padding: 48px 44px;
         }
 
         .header h1 {
-            font-size: 36px;
+            font-size: 32px;
             margin: 0;
             color: var(--heading-color);
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .header h2 {
-            font-size: 20px;
-            color: var(--accent-blue);
+            font-size: 17px;
+            color: var(--muted-text);
             font-weight: 500;
-            margin: 8px 0 25px 0;
+            margin: 6px 0 28px;
+            letter-spacing: 0.2px;
         }
 
         .section-title {
-            font-size: 20px;
+            font-size: 14px;
             color: var(--heading-color);
             text-transform: uppercase;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 15px;
-            margin-bottom: 20px;
-            margin-top: 40px;
+            letter-spacing: 2px;
+            padding: 0 0 8px;
+            margin-bottom: 22px;
+            margin-top: 36px;
             font-weight: 700;
-            background: var(--accent-light);
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 0 4px 4px 0;
+            border-bottom: 2px solid var(--heading-color);
         }
 
         .summary {
-            font-size: 15px;
+            font-size: 14.5px;
             color: var(--main-text);
-            text-align: justify;
-            margin-bottom: 15px;
+            margin: 0 0 12px;
+            line-height: 1.65;
         }
 
         .item {
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
         }
 
         .item-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--heading-color);
+            letter-spacing: -0.2px;
         }
 
         .item-date {
-            font-size: 14px;
-            color: var(--accent-gray);
-            font-weight: 600;
-            background-color: var(--accent-light);
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid #bfdbfe;
+            font-size: 13px;
+            color: var(--muted-text);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
         }
 
         .item-role {
-            font-size: 16px;
+            font-size: 14.5px;
             font-weight: 600;
-            color: var(--accent-blue);
+            color: var(--muted-text);
             margin-bottom: 12px;
             display: block;
         }
 
         .item-description {
-            font-size: 15px;
-            color: var(--main-text);
-            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--muted-text);
+            margin-bottom: 14px;
             line-height: 1.6;
-            background: #f8fafc;
-            padding: 12px 16px;
-            border-left: 3px solid #cbd5e1;
-            border-radius: 0 6px 6px 0;
-            font-style: italic;
+            padding: 10px 0 10px 14px;
+            border-left: 2px solid var(--line-color);
         }
 
         .subsection-title {
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--heading-color);
-            margin-top: 18px;
-            margin-bottom: 10px;
+            margin-top: 16px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            border-bottom: 2px solid var(--accent-light);
-            padding-bottom: 4px;
+            letter-spacing: 1px;
         }
 
         .item ul {
             padding-left: 0;
-            margin-top: 0;
-            margin-bottom: 20px;
+            margin: 0 0 16px;
             list-style: none;
         }
 
         .item ul li {
-            font-size: 14.5px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            margin-bottom: 6px;
             color: var(--main-text);
             position: relative;
-            padding-left: 18px;
-            line-height: 1.5;
+            padding-left: 16px;
+            line-height: 1.55;
         }
 
-        /* Делаем маркеры тонкими линиями (тире) вместо жирных точек */
         .item ul li::before {
             content: '—';
             position: absolute;
             left: 0;
-            color: var(--accent-gray); /* Сделал цвет серым, чтобы он не так бросался в глаза */
+            color: var(--muted-text);
         }
 
         .tag-container {
-            margin-top: 10px;
-            margin-bottom: 20px;
+            margin: 8px 0 14px;
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
@@ -260,46 +267,149 @@
 
         .tag {
             display: inline-block;
-            background: var(--accent-light);
-            padding: 4px 10px;
-            border-radius: 6px;
+            background: var(--accent-soft);
+            padding: 3px 9px;
+            border-radius: 2px;
             font-size: 12px;
-            color: var(--accent-blue);
+            color: var(--main-text);
             font-weight: 500;
-            border: 1px solid #bfdbfe;
+            border: 1px solid var(--line-color);
+            letter-spacing: 0.2px;
+        }
+
+        .downloads-section {
+            margin-top: 36px;
+            border-top: 1px solid var(--line-color);
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .btn-download {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
+            background-color: var(--heading-color);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 2px;
+            font-size: 13px;
             font-weight: 600;
             text-decoration: none;
-            margin-right: 15px;
-            margin-bottom: 10px;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            letter-spacing: 0.3px;
+            transition: background-color 0.15s;
         }
 
         .btn-download:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        .btn-download:active {
-            transform: translateY(0);
+            background-color: #000000;
         }
 
         .btn-download svg {
             margin-right: 8px;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--heading-color);
+            border: 1px solid var(--heading-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--heading-color);
+            color: #ffffff;
+        }
+
+        /* --- RESPONSIVE --- */
+
+        /* Tablet */
+        @media (max-width: 960px) {
+            .resume-wrapper {
+                margin: 20px;
+                flex-direction: column;
+            }
+
+            .sidebar,
+            .main-content {
+                width: 100%;
+            }
+
+            .sidebar {
+                padding: 32px 32px 28px;
+            }
+
+            .photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .main-content {
+                padding: 36px 32px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                margin-top: 28px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .resume-wrapper {
+                margin: 0;
+                border: none;
+                box-shadow: none;
+            }
+
+            .sidebar {
+                padding: 28px 20px 24px;
+            }
+
+            .sidebar h3 {
+                margin-top: 24px;
+            }
+
+            .main-content {
+                padding: 28px 20px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header h2 {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+            .item-title {
+                font-size: 17px;
+            }
+
+            .item-date {
+                font-size: 12.5px;
+            }
+
+            .summary,
+            .item ul li {
+                font-size: 14px;
+            }
+
+            .btn-download {
+                width: 100%;
+            }
         }
 
 @media print {
@@ -359,206 +469,257 @@
 <div class="resume-wrapper">
     <aside class="sidebar">
         <div class="photo-container">
-            <img id="photo" src="" alt="Мое фото" class="photo">
+            <img src="photo_of_me.jpg" alt="Ямшанов Константин" class="photo">
         </div>
 
-        <h3 id="contacts-title"></h3>
-        <ul class="contact-list" id="contacts-list">
+        <h3>Контакты</h3>
+        <ul class="contact-list">
+            <li><strong>Дата рождения</strong>06.09.2001</li>
+            <li><strong>Формат работы</strong>Удаленно / Готов к переезду / г. Ижевск</li>
+            <li><strong>Email</strong><a href="mailto:kyamshanov@vk.com">kyamshanov@vk.com</a></li>
+            <li><strong>Telegram</strong><a href="https://t.me/kyamshanov">t.me/kyamshanov</a></li>
+            <li><strong>GitHub</strong><a href="http://github.com/aequicor">github.com/aequicor</a></li>
         </ul>
 
-        <h3 id="education-title"></h3>
-        <ul class="contact-list" id="education-list">
+        <h3>Образование</h3>
+        <ul class="contact-list">
+            <li>
+                <strong>2023 — 2025</strong>
+                ИжГТУ имени М. Т. Калашникова<br>
+                Магистратура<br>
+                <em>Менеджмент (Стратегическое управление)</em>
+            </li>
+            <li>
+                <strong>2019 — 2023</strong>
+                ИжГТУ имени М. Т. Калашникова<br>
+                Бакалавриат<br>
+                <em>Информатика и вычислительная техника</em>
+            </li>
         </ul>
 
-        <h3 id="courses-title"></h3>
-        <ul class="contact-list" id="courses-list">
+        <h3>Курсы</h3>
+        <ul class="contact-list">
+            <li><strong>2026</strong>Управление командой — Podlodka Teamlead Crew</li>
+            <li><strong>2026</strong>Безопасность Android — Podlodka Android Crew</li>
+            <li><strong>2025</strong>Мобильный System Design — Podlodka Crew</li>
+            <li><strong>2025</strong>Compose: 3 года в продакшене — Podlodka Crew</li>
+            <li><strong>2024</strong>Автоматизация разработки — Podlodka Crew</li>
         </ul>
 
-        <h3 id="skills-title"></h3>
-        <div id="skills-list">
+        <h3>Hard Skills</h3>
+        <div>
+            <div class="skill-group">
+                <span class="skill-category">Языки программирования</span>
+                <span class="skill-items">Kotlin, Java</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Android</span>
+                <span class="skill-items">Android SDK, Jetpack Compose, Coroutines, Flow, CameraX, ML Kit, Material Design 3, Navigation, WorkManager</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Architecture</span>
+                <span class="skill-items">Clean Architecture, MVI/MVVM, Multi-module, SOLID, Decompose</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">UI</span>
+                <span class="skill-items">Jetpack Compose, View, Canvas, Material Design 3</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">DI</span>
+                <span class="skill-items">Dagger 2, Hilt, Koin</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Сеть &amp; Безопасность</span>
+                <span class="skill-items">REST API, gRPC, WebSocket, Retrofit, OkHttp, Ktor, SSL/TLS Pinning, SQLCipher</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Хранение данных</span>
+                <span class="skill-items">Room, SQLDelight, kotlinx.serialization</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Cross-Platform &amp; Native</span>
+                <span class="skill-items">Kotlin/Native, Kotlin Multiplatform, LLVM, JNI, C/C++ интеграция</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Backend</span>
+                <span class="skill-items">Spring, Spring Boot, OAuth 2.0, JWT, Docker, docker-compose, микросервисы</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">AI Tooling</span>
+                <span class="skill-items">Claude Code, OpenCode, Codex, on-device OCR (Smart Engines)</span>
+            </div>
+            <div class="skill-group">
+                <span class="skill-category">Тестирование и Инфраструктура</span>
+                <span class="skill-items">JUnit, MockK, Espresso, Gradle, GitHub Actions, CI/CD, GitFlow</span>
+            </div>
         </div>
 
     </aside>
 
     <main class="main-content">
         <div class="header">
-            <h1 id="name"></h1>
-            <h2 id="role"></h2>
+            <h1>Ямшанов Константин Алексеевич</h1>
+            <h2>Senior Android Developer / Kotlin Multiplatform</h2>
         </div>
 
-        <div class="section-title" id="about-title"></div>
-        <div id="about-list"></div>
+        <div class="section-title">Обо мне</div>
+        <div>
+            <p class="summary">Senior Android-разработчик с 7-летним опытом в IT, из них 5+ лет в сложных Android-приложениях в финтехе. Веду фичи на всём жизненном цикле продукта: от проектирования архитектуры до релиза и пост-релизной поддержки. Пишу производительный, безопасный и масштабируемый код на Kotlin и Java.</p>
+            <p class="summary">Работаю с продуктовым контекстом: участвую в проработке фич на стыке бизнес-требований, пользовательского опыта и технических ограничений. Есть опыт работы в многомодульных проектах и кросс-функциональных командах. Беру ответственность за архитектурные решения и доставку критичного функционала в срок.</p>
+            <p class="summary">Помимо Android, есть опыт кросс-платформенной разработки на Kotlin/Native и Kotlin Multiplatform (опен-сорс CLI ai-kit-v2 компилируется в нативные бинарники для Linux, macOS и Windows через LLVM), а также микросервисного бэкенда на Kotlin/Java со Spring OAuth 2.0 и Docker. Знаком с интеграцией нативных C/C++ библиотек в Android через JNI.</p>
+            <p class="summary">Использую AI-инструменты в ежедневной разработке: Claude Code, OpenCode для рефакторинга, генерации тестов и ускорения код-ревью. Делюсь подходами с командой.</p>
+            <p class="summary">Ценю здоровую инженерную культуру и прозрачную коммуникацию. Делюсь экспертизой через онбординг, код-ревью и менторство.</p>
+        </div>
 
-        <div class="section-title" id="experience-title"></div>
-        <div id="experience-list"></div>
+        <div class="section-title">Опыт работы</div>
+        <div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">БСЦ Мск. Проект — ВТБ Онлайн</span>
+                    <span class="item-date">Август 2021 — Февраль 2026 (4 года 7 мес.)</span>
+                </div>
+                <span class="item-role">Senior Android Developer</span>
+                <div class="tag-container">
+                    <span class="tag">Kotlin</span>
+                    <span class="tag">Android SDK</span>
+                    <span class="tag">Jetpack Compose</span>
+                    <span class="tag">Coroutines</span>
+                    <span class="tag">Flow</span>
+                    <span class="tag">Clean Architecture</span>
+                    <span class="tag">Multi-module</span>
+                    <span class="tag">Dagger 2</span>
+                    <span class="tag">MlKit</span>
+                    <span class="tag">ZXing</span>
+                    <span class="tag">Smart Engines</span>
+                    <span class="tag">CameraX</span>
+                    <span class="tag">Canvas</span>
+                    <span class="tag">Material Design 3</span>
+                    <span class="tag">OkHttp</span>
+                    <span class="tag">JNI</span>
+                    <span class="tag">Gradle</span>
+                </div>
+                <div class="item-description">Мобильное приложение банка ВТБ Онлайн на Android. По публичным данным: ~27 млн MAU и 8 млрд заходов за 2025 год, 2-е место в Mobile Banking Rank 2024 от Markswebb с оценкой 89,6 из 100 в номинации «Цифровой офис».</div>
 
-        <div class="section-title" id="projects-title"></div>
-        <div id="projects-list"></div>
+                <div class="subsection-title">Технические результаты:</div>
+                <ul>
+                    <li>Спроектировал с нуля архитектуру модулей оплаты сотовой связи и автоплатежей на Kotlin/Coroutines с применением Clean Architecture. Платежи и переводы — один из самых частых сценариев в приложении с 27+ млн MAU.</li>
+                    <li>Разработал архитектуру модулей on-device AI/ML распознавания: QR, Aztec, DataMatrix, штрихкоды, номера телефонов, банковские карты, реквизиты по фото. Сценариями QR-сканирования пользуются ~2 млн клиентов в месяц.</li>
+                    <li>Реализовал клиентскую часть продукта «Умная камера»: кастомные UI-оверлеи на Canvas, обработка кадров в реальном времени, корректная работа на бюджетных устройствах с камерой низкого разрешения.</li>
+                    <li>Разрабатывал UI на Jetpack Compose и Material Design 3 совместно с дизайнерами, прорабатывая UX-флоу платежей, сканирования и подтверждений.</li>
+                    <li>Интегрировал нативные C/C++ библиотеки распознавания: Smart Engines SDK (on-device OCR и баркоды без отправки данных на сервер банка) и опенсорс-библиотеки. Распознавание реквизитов по фото около 1 секунды у клиента.</li>
+                    <li>Интегрировал оплату по QR через СБП в 5+ сценариях C2B: покупки в магазинах, ЖКУ, налоги, штрафы, госплатежи. Флоу собирал по требованиям регулятора и НСПК.</li>
+                    <li>Вёл разработку и рефакторинг в многомодульном проекте из 100+ Gradle-модулей. Кодовая база обслуживает 8 млрд заходов в год при средней сессии 3–4 минуты.</li>
+                    <li>Разделил код на слои и поднял покрытие unit-тестами, сократив онбординг соседних команд с недель до дней.</li>
+                </ul>
 
-        <div class="downloads-section" style="margin-top: 40px; border-top: 1px solid var(--line-color); padding-top: 25px;" id="downloads-list">
+                <div class="subsection-title">Бизнес-результаты:</div>
+                <ul>
+                    <li>За время моей работы приложение поднялось с 4-го на 2-е место в Mobile Banking Rank 2024. Аналитики Markswebb отдельно выделили сценарии распознавания платёжных документов.</li>
+                    <li>Вёл фичи платежей и распознавания на всём жизненном цикле продукта: проектирование, реализация, интеграция с вендорами (в т.ч. Smart Engines), согласование с регулятором, релиз и пост-релизная поддержка.</li>
+                    <li>Закрывал 100% релизов в срок: дедлайны регулятора (СБП, ФНС) и продуктовые даты.</li>
+                    <li>Внедрил стандарты модульности, практики код-ревью и гайдлайны по подключению внешних SDK в командах. Координировал кросс-функциональное взаимодействие, занимался менторством и онбордингом коллег.</li>
+                    <li>Использую AI-агентов (Claude Code, OpenCode) в ежедневной работе для рефакторинга, генерации тестов и ускорения код-ревью. Делюсь подходами с командой.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Игровая платформа</span>
+                    <span class="item-date">Июнь 2019 — Август 2021 (2 года 3 мес.)</span>
+                </div>
+                <span class="item-role">Backend-разработчик (Java)</span>
+                <div class="tag-container">
+                    <span class="tag">Java</span>
+                    <span class="tag">Netty</span>
+                    <span class="tag">CompletableFuture</span>
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Google Sheets API</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">OpenVPN</span>
+                </div>
+                <div class="item-description">Разработка игровых режимов на Java на игровой платформе с дневным онлайном 3 000+ игроков.</div>
+
+                <div class="subsection-title">Технические результаты:</div>
+                <ul>
+                    <li>Проектировал и оптимизировал высоконагруженные Java-системы для бесперебойной работы платформы при пиковых нагрузках.</li>
+                    <li>Разработал систему динамической настройки игровых параметров в реальном времени через конфигурацию в Google Таблицах. Сократил цикл итерации игровых дизайнеров с дней до минут.</li>
+                    <li>Создал собственный язык программирования (DSL) для управления комплексными параметрами настроек.</li>
+                    <li>Настраивал удалённые серверы, маршрутизацию и туннели (OpenVPN, SSH).</li>
+                </ul>
+
+                <div class="subsection-title">Бизнес-результаты:</div>
+                <ul>
+                    <li>Отвечал за поиск каналов привлечения игроков, выявление их потребностей и повышение монетизации проекта.</li>
+                    <li>С нуля организовал работу команды поддержки (найм, процессы, инструменты), активно участвовал в бизнес-планировании платформы.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-title">Опен-сорс и пет-проекты</div>
+        <div>
+            <div class="item">
+                <div class="item-title" style="margin-bottom: 8px;">AI-Kit v2 — Кросс-платформенный CLI для конфигурации AI-агентов</div>
+                <div class="tag-container">
+                    <span class="tag">Kotlin/Native</span>
+                    <span class="tag">Kotlin Multiplatform</span>
+                    <span class="tag">LLVM</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">Apache 2.0</span>
+                    <span class="tag">12 релизов</span>
+                </div>
+                <p class="summary">Опен-сорс CLI на Kotlin/Native с использованием Kotlin Multiplatform; компилируется через LLVM в нативные бинарники для Linux x64, macOS arm64 и Windows (mingw). Спроектировал систему bundle/манифестов для переиспользуемых пресетов AI-агентов (Claude Code, OpenCode, Codex, Qwen Code), реализовал валидацию манифестов, рендеринг шаблонов, работу с секретами через переменные окружения, флоу update/remove/rollback. Выпустил 12 релизов с GitHub Actions CI/CD, unit- и E2E-тестами на реальных нативных бинарниках. github.com/aequicor/ai-kit-v2</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title" style="margin-bottom: 8px;">Mission Backend — Микросервисный бэкенд платформы задач</div>
+                <div class="tag-container">
+                    <span class="tag">Kotlin</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">Spring</span>
+                    <span class="tag">OAuth 2.0</span>
+                    <span class="tag">JWT</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">docker-compose</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">16 релизов</span>
+                </div>
+                <p class="summary">Спроектировал микросервисный бэкенд на Kotlin и Java из 4 независимых сервисов: Gateway, Points (таск-менеджер), Database и Mission-ID. Реализовал аутентификацию и авторизацию через Spring OAuth 2.0 Resource Server с JWT — централизованно на Gateway. Упаковал сервисы в Docker и оркестрировал стек через docker-compose для воспроизводимых локальных и продакшен-деплоев. Настроил пайплайны CI/CD на GitHub Actions, выпустил 16 версий с тегами для независимо деплоящихся сервисов. github.com/aequicor/Mission-backend</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title" style="margin-bottom: 8px;">MissionChat — KMP-клиент для LLM</div>
+                <div class="tag-container">
+                    <span class="tag">Kotlin Multiplatform</span>
+                    <span class="tag">Compose Multiplatform</span>
+                    <span class="tag">OpenAI API</span>
+                    <span class="tag">Koin</span>
+                    <span class="tag">Ktor</span>
+                    <span class="tag">Decompose</span>
+                    <span class="tag">FlowMVI</span>
+                    <span class="tag">Room</span>
+                    <span class="tag">Clean Architecture</span>
+                </div>
+                <p class="summary">Разработка с нуля open-source клиента для взаимодействия с LLM. Проект построен на передовом стеке KMP для Desktop, Android и iOS с использованием современных подходов к UI (Compose Multiplatform).</p>
+            </div>
+        </div>
+
+        <div class="downloads-section">
+            <a href="Резюме_Константин_Ямшанов.pdf" class="btn-download">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Скачать в формате PDF
+            </a>
+            <a href="/" class="btn-download btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 3l-9 8h3v9h5v-6h2v6h5v-9h3z"/>
+                </svg>
+                Сайт-визитка
+            </a>
         </div>
     </main>
 </div>
 
-<script src="data.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById("page-title").textContent = cvData.title;
-        document.getElementById("photo").src = cvData.photoUrl;
-
-        // Contacts
-        document.getElementById("contacts-title").textContent = cvData.contactsTitle;
-        const contactsList = document.getElementById("contacts-list");
-        cvData.contacts.forEach(contact => {
-            const li = document.createElement("li");
-            let valueHtml = contact.value;
-            if (contact.href) {
-                valueHtml = `<a href="${contact.href}">${contact.value}</a>`;
-            }
-            li.innerHTML = `<strong>${contact.label}</strong>${valueHtml}`;
-            contactsList.appendChild(li);
-        });
-
-        // Education
-        document.getElementById("education-title").textContent = cvData.educationTitle;
-        const educationList = document.getElementById("education-list");
-        cvData.education.forEach(edu => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                <strong>${edu.years}</strong>
-                ${edu.institution}<br>
-                ${edu.level}<br>
-                <em>${edu.specialty}</em>
-            `;
-            educationList.appendChild(li);
-        });
-
-        // Courses
-        if (cvData.courses && cvData.courses.length) {
-            document.getElementById("courses-title").textContent = cvData.coursesTitle;
-            const coursesList = document.getElementById("courses-list");
-            cvData.courses.forEach(course => {
-                const li = document.createElement("li");
-                li.innerHTML = `<strong>${course.year}</strong>${course.name}`;
-                coursesList.appendChild(li);
-            });
-        }
-
-        // Skills
-        document.getElementById("skills-title").textContent = cvData.skillsTitle;
-        const skillsList = document.getElementById("skills-list");
-        cvData.skills.forEach(skill => {
-            const div = document.createElement("div");
-            div.className = "skill-group";
-            div.innerHTML = `
-                <span class="skill-category">${skill.category}</span>
-                <span class="skill-items">${skill.items}</span>
-            `;
-            skillsList.appendChild(div);
-        });
-
-        // Header
-        document.getElementById("name").textContent = cvData.name;
-        document.getElementById("role").textContent = cvData.role;
-
-        // About
-        document.getElementById("about-title").textContent = cvData.aboutTitle;
-        const aboutList = document.getElementById("about-list");
-        cvData.about.forEach(paragraph => {
-            const p = document.createElement("p");
-            p.className = "summary";
-            p.textContent = paragraph;
-            aboutList.appendChild(p);
-        });
-
-        // Experience
-        document.getElementById("experience-title").textContent = cvData.experienceTitle;
-        const experienceList = document.getElementById("experience-list");
-        cvData.experience.forEach(exp => {
-            const expDiv = document.createElement("div");
-            expDiv.className = "item";
-
-            // 1. Header (Company + Period)
-            let contentHtml = `
-                <div class="item-header">
-                    <span class="item-title">${exp.company}</span>
-                    <span class="item-date">${exp.period}</span>
-                </div>
-            `;
-
-            // 2. Role
-            contentHtml += `<span class="item-role">${exp.role}</span>`;
-
-            // 3. Tags (Stack)
-            if (exp.stack && exp.stack.length > 0) {
-                let tagsHtml = "";
-                exp.stack.forEach(tag => {
-                    tagsHtml += `<span class="tag">${tag}</span>`;
-                });
-                contentHtml += `<div class="tag-container">${tagsHtml}</div>`;
-            }
-
-            // 4. Description (optional)
-            if (exp.description) {
-                contentHtml += `<div class="item-description">${exp.description}</div>`;
-            }
-
-            // 5. Sections (Technical & Business Results)
-            exp.sections.forEach(sec => {
-                let itemsHtml = "";
-                sec.items.forEach(item => {
-                    itemsHtml += `<li>${item}</li>`;
-                });
-                contentHtml += `
-                    <div class="subsection-title">${sec.title}</div>
-                    <ul>${itemsHtml}</ul>
-                `;
-            });
-
-            expDiv.innerHTML = contentHtml;
-            experienceList.appendChild(expDiv);
-        });
-
-        // Projects
-        document.getElementById("projects-title").textContent = cvData.projectsTitle;
-        const projectsList = document.getElementById("projects-list");
-        cvData.projects.forEach(proj => {
-            const projDiv = document.createElement("div");
-            projDiv.className = "item";
-            projDiv.style.marginBottom = "30px";
-
-            let tagsHtml = "";
-            proj.tags.forEach(tag => {
-                tagsHtml += `<span class="tag">${tag}</span>`;
-            });
-
-            projDiv.innerHTML = `
-                <div class="item-title" style="margin-bottom: 8px;">${proj.title}</div>
-                <div class="tag-container" style="margin-bottom: 12px;">
-                    ${tagsHtml}
-                </div>
-                <p class="summary" style="margin-bottom: 0;">
-                    ${proj.description}
-                </p>
-            `;
-            projectsList.appendChild(projDiv);
-        });
-
-        // Downloads
-        const downloadsList = document.getElementById("downloads-list");
-        cvData.downloads.forEach(dl => {
-            const a = document.createElement("a");
-            a.href = dl.url;
-            a.className = "btn-download";
-            a.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                </svg>
-                ${dl.text}
-            `;
-            downloadsList.appendChild(a);
-        });
-    });
-</script>
 </body>
 </html>
