@@ -59,10 +59,14 @@
 
         .photo {
             width: 150px;
-            height: 150px;
+            height: auto;
+            aspect-ratio: 1142 / 1280;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
             border: 2px solid var(--sidebar-divider);
+            display: inline-block;
+            background: var(--sidebar-bg);
         }
 
         .sidebar h3 {
@@ -343,7 +347,6 @@
 
             .photo {
                 width: 120px;
-                height: 120px;
             }
 
             .main-content {

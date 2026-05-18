@@ -57,7 +57,7 @@
         <a class="card reveal" href="/vacation/">
             <span class="card-icon">🏖</span>
             <h3 data-i18n="vacation_title">Заявление на отпуск</h3>
-            <p data-i18n="vacation_desc">Шаблон челобитной на отпуск.</p>
+            <p data-i18n="vacation_desc">Шаблон челобитной на отдых душевный и телесный.</p>
         </a>
     </div>
 </section>
@@ -107,7 +107,7 @@
             cv_title: 'Резюме',
             cv_desc: 'Резюме и профессиональный путь.',
             vacation_title: 'Заявление на отпуск',
-            vacation_desc: 'Шаблон челобитной на отпуск.',
+            vacation_desc: 'Шаблон челобитной на отдых душевный и телесный.',
             aikit_desc: 'Набор инструментов для работы с ИИ — модульный, расширяемый, под мои задачи.',
             kos_desc: 'Операционная система знаний: организация информации как живой структуры.',
             notepen_desc: 'Инструмент для заметок с фокусом на интерфейс и скорость мысли.',
@@ -280,6 +280,12 @@
         }
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const profileImg = document.querySelector('.profile-img');
+    profileImg.addEventListener('click', () => {
+        const expanded = profileImg.classList.toggle('profile-img--expanded');
+        document.body.style.overflowX = expanded ? 'hidden' : '';
+    });
 
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mousemove', e => {

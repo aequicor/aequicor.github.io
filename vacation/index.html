@@ -5,265 +5,478 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Челобитная на отпуск</title>
     <style>
+        :root {
+            --ink: #2c1810;
+            --accent: #8B4513;
+            --accent-dark: #654321;
+            --parchment: #fbf6ec;
+            --parchment-edge: #e8dcc4;
+            --rule: #c9a86b;
+            --bg: #efe7d6;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html, body { width: 100%; }
+
         body {
-            font-family: 'Times New Roman', serif;
-            background: #f5f5f5;
-            color: #2c1810;
+            font-family: 'Times New Roman', 'Georgia', serif;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(139,69,19,0.08), transparent 40%),
+                radial-gradient(circle at 80% 90%, rgba(139,69,19,0.06), transparent 40%),
+                var(--bg);
+            color: var(--ink);
             line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px 16px 48px;
         }
 
+        /* ===== Top toolbar ===== */
+        .toolbar {
+            max-width: 210mm;
+            margin: 20px auto 0;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+        .control-button {
+            background: var(--accent);
+            color: #fff;
+            border: 1px solid var(--accent-dark);
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            transition: background .2s, transform .05s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .control-button:hover { background: var(--accent-dark); }
+        .control-button:active { transform: translateY(1px); }
+        .control-button.save-button { background: #2E8B57; border-color: #1e6b41; }
+        .control-button.save-button:hover { background: #228B22; }
+
+        /* ===== A4 sheet ===== */
         .a4-container {
             width: 210mm;
-            height: 297mm;
-            background: white;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            padding: 25mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: var(--parchment);
+            background-image:
+                radial-gradient(ellipse at top left, rgba(139,69,19,0.04), transparent 60%),
+                radial-gradient(ellipse at bottom right, rgba(139,69,19,0.05), transparent 60%);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18), inset 0 0 60px rgba(139,69,19,0.05);
+            padding: 22mm 25mm;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--parchment-edge);
+        }
+        /* decorative inner border */
+        .a4-container::before {
+            content: "";
+            position: absolute;
+            inset: 8mm;
+            border: 1px solid var(--rule);
+            pointer-events: none;
+            opacity: .6;
+        }
+        .a4-container::after {
+            content: "";
+            position: absolute;
+            inset: 9mm;
+            border: 1px solid var(--rule);
+            pointer-events: none;
+            opacity: .25;
         }
 
-        .header { text-align: right; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #8B4513; }
-        .header h2 { font-size: 16pt; color: #8B4513; margin-bottom: 12px; font-weight: normal; }
-        .header p { font-size: 12pt; margin-bottom: 6px; }
+        .header {
+            text-align: right;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .header h2 {
+            font-size: 15pt;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: normal;
+            font-style: italic;
+        }
+        .header p { font-size: 12pt; margin-bottom: 4px; }
 
-        .title { text-align: center; font-size: 18pt; margin: 30px 0; color: #8B4513; text-transform: uppercase; font-weight: bold; }
+        .decoration {
+            text-align: center;
+            margin: 10px 0 6px;
+            color: var(--accent);
+            font-size: 16pt;
+            letter-spacing: 10px;
+        }
 
-        .content { font-size: 12pt; text-align: justify; margin-bottom: 30px; flex-grow: 1; }
-        .content p { margin-bottom: 15px; text-indent: 1.5em; line-height: 1.8; }
+        .title {
+            text-align: center;
+            font-size: 22pt;
+            margin: 4px 0 18px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 4px;
+            font-variant: small-caps;
+        }
+
+        .content { font-size: 12pt; text-align: justify; flex: 1; }
+        .content p { margin-bottom: 12px; text-indent: 1.5em; line-height: 1.7; }
 
         .form-field {
             display: inline-block;
             min-width: 120px;
-            border-bottom: 1px dotted #8B4513;
-            padding: 0 2px;
+            border-bottom: 1px dotted var(--accent);
+            padding: 0 4px;
             background: transparent;
+            transition: background .2s;
         }
-        .form-field:focus { background: rgba(139, 69, 19, 0.05); border-bottom: 1px solid #8B4513; outline: none; }
+        .form-field:focus {
+            background: rgba(139, 69, 19, 0.08);
+            border-bottom: 1px solid var(--accent);
+            outline: none;
+        }
+        .form-field:empty::before {
+            content: attr(data-placeholder);
+            color: #a08868;
+            font-style: italic;
+        }
 
-        .signature-block { text-align: right; margin-top: 40px; padding-top: 20px; border-top: 1px solid #8B4513; }
-        .signature-line { display: inline-block; width: 180px; border-bottom: 1px solid #8B4513; margin: 0 8px; }
-
-        .notes { margin-top: 25px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; font-size: 10pt; }
-        .notes h3 { color: #8B4513; margin-bottom: 10px; text-align: center; }
-        .notes ul { list-style: none; padding-left: 15px; }
-        .notes li { margin-bottom: 6px; position: relative; }
-        .notes li::before { content: "—"; color: #8B4513; position: absolute; left: -15px; }
-
-        .footer { text-align: center; margin-top: 20px; font-style: italic; color: #666; font-size: 10pt; }
-        .decoration { text-align: center; margin: 15px 0; color: #8B4513; font-size: 14pt; letter-spacing: 8px; }
-
-        .controls {
-            position: fixed;
-            top: 20px;
-            right: 20px;
+        .signature-block {
+            margin-top: 24px;
+            padding-top: 14px;
+            border-top: 1px solid var(--rule);
+        }
+        .signature-block .closing-phrase {
+            margin-bottom: 18px;
+            font-style: italic;
+            color: #5a3e28;
+        }
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .sig-date {
+            flex: 0 1 auto;
+            font-size: 11pt;
+        }
+        .sig-sign {
+            flex: 0 1 auto;
+            text-align: right;
+        }
+        .sig-sign-line-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            justify-content: flex-end;
+        }
+        .sig-field-col {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
+            align-items: center;
+        }
+        .sig-label {
+            display: block;
+            font-size: 9pt;
+            color: #8a6a4a;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .sig-label-row {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        .sig-label-row span {
+            font-size: 9pt;
+            color: #8a6a4a;
+            text-align: center;
+        }
+        .signature-line {
+            display: inline-block;
+            width: 110px;
+            border-bottom: 1px solid var(--accent);
+        }
+        .signature-name-line {
+            display: inline-block;
+            min-width: 140px;
+            border-bottom: 1px dotted var(--accent);
+            padding: 0 4px;
         }
 
-        .control-button {
-            background: #8B4513;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            font-family: inherit;
-            font-size: 12pt;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: background 0.3s;
-            min-width: 200px;
+        .footer {
+            text-align: center;
+            margin-top: 14px;
+            font-style: italic;
+            color: #8a6a4a;
+            font-size: 10pt;
         }
 
-        .control-button:hover { background: #654321; }
-        .control-button.save-button { background: #2E8B57; }
-        .control-button.save-button:hover { background: #228B22; }
+        /* ===== Notes — outside the sheet ===== */
+        .notes {
+            max-width: 210mm;
+            margin: 24px auto 0;
+            padding: 18px 22px;
+            background: #fff;
+            border: 1px solid var(--parchment-edge);
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+            font-size: 13px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .notes h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .notes ul { list-style: none; padding-left: 16px; }
+        .notes li { margin-bottom: 6px; position: relative; }
+        .notes li::before { content: "—"; color: var(--accent); position: absolute; left: -16px; }
 
-        .print-button::before { content: "🖨️ "; }
-        .save-button::before { content: "💾 "; }
-
+        /* ===== Modal ===== */
         .modal {
             display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.55);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            padding: 16px;
         }
-
         .modal-content {
             background: white;
-            padding: 30px;
-            border-radius: 5px;
+            padding: 24px;
+            border-radius: 6px;
             max-width: 800px;
-            width: 90%;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
         }
-
         .word-preview {
-            background: white;
-            border: 2px solid #8B4513;
-            padding: 30px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid var(--accent);
+            padding: 24px;
             font-family: 'Times New Roman', serif;
-            font-size: 14pt;
+            font-size: 13pt;
             line-height: 1.5;
             margin: 15px 0;
-            max-height: 500px;
+            max-height: 50vh;
             overflow-y: auto;
         }
-
-        .word-header { text-align: right; margin-bottom: 40px; }
-        .word-title { text-align: center; font-size: 16pt; font-weight: bold; margin: 30px 0; text-transform: uppercase; }
-        .word-content { text-align: justify; margin-bottom: 30px; }
-        .word-content p { margin-bottom: 20px; text-indent: 1.5em; line-height: 1.8; }
-        .word-signature { text-align: right; margin-top: 60px; }
-        .word-signature-line { border-bottom: 1px solid #000; display: inline-block; width: 250px; margin-left: 10px; }
-
-        .copy-button {
-            background: #2E8B57;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            font-family: inherit;
-            font-size: 12pt;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
+        .word-header { text-align: right; margin-bottom: 24px; }
+        .word-title { text-align: center; font-size: 16pt; font-weight: bold; margin: 24px 0; text-transform: uppercase; }
+        .word-content p { margin-bottom: 14px; text-indent: 1.5em; line-height: 1.7; text-align: justify; }
+        .word-signature { text-align: right; margin-top: 40px; }
+        .word-signature-line { border-bottom: 1px solid #000; display: inline-block; width: 220px; }
+        .modal-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .modal-actions button { flex: 1 1 200px; }
+        .hint-box {
+            margin-top: 14px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.6;
         }
-        .copy-button:hover { background: #228B22; }
 
+        /* ===== PRINT — strict one-page A4 ===== */
+        @page { size: A4 portrait; margin: 20mm 15mm 20mm 25mm; }
         @media print {
-            body { background: white; padding: 0; margin: 0; }
-            .a4-container { width: 210mm; height: 297mm; box-shadow: none; padding: 25mm; margin: 0; }
-            .controls, .notes { display: none; }
-            .form-field { border-bottom: none; background: transparent !important; }
+            html, body {
+                background: #fff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: auto;
+                height: auto;
+            }
+            .toolbar, .notes, .modal { display: none !important; }
+            .a4-container {
+                width: 100%;
+                height: auto;
+                min-height: 0;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                background: #fff;
+                border: none;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                overflow: visible;
+            }
+            .a4-container::before,
+            .a4-container::after { display: none; }
+            .form-field {
+                border-bottom: none;
+                background: transparent !important;
+                color: #000;
+            }
+            .form-field:empty::before { color: transparent; }
+            .title, .header h2, .decoration, .signature-line { color: #000 !important; }
+            .header, .signature-block { border-color: #000; }
+            /* prevent overflow second page */
+            .footer { margin-top: 8px; }
         }
 
-        @media (max-width: 220mm) {
-            .a4-container { width: 100%; height: auto; min-height: 297mm; }
-            .controls { position: relative; flex-direction: row; justify-content: center; margin-bottom: 20px; }
+        /* ===== Mobile / tablet ===== */
+        @media (max-width: 820px) {
+            body { padding: 12px 8px 32px; }
+            .toolbar {
+                justify-content: stretch;
+                margin-bottom: 12px;
+            }
+            .control-button { flex: 1 1 auto; justify-content: center; padding: 12px; font-size: 15px; }
+            .a4-container {
+                width: 100%;
+                min-height: 0;
+                padding: 20px 16px;
+                border-radius: 4px;
+            }
+            .a4-container::before { inset: 6px; }
+            .a4-container::after { inset: 10px; }
+            .header h2 { font-size: 16px; }
+            .header p { font-size: 14px; }
+            .title { font-size: 22px; letter-spacing: 2px; margin: 6px 0 14px; }
+            .decoration { font-size: 16px; letter-spacing: 6px; }
+            .content { font-size: 15px; }
+            .content p { line-height: 1.6; text-indent: 1em; }
+            .form-field { min-width: 80px; padding: 2px 4px; }
+            .signature-line { width: 140px; }
+            .notes { margin-top: 16px; padding: 14px; }
+        }
+        @media (max-width: 420px) {
+            .header { text-align: left; }
+            .signature-block { text-align: left; }
+            .title { font-size: 19px; }
+            .content { font-size: 14px; }
         }
     </style>
 </head>
 <body>
-<div class="controls">
-    <button class="control-button print-button" onclick="printDocument()">Печать</button>
-    <button class="control-button save-button" onclick="saveForWord()">Сохранить для Word</button>
-</div>
 
 <div class="a4-container">
     <div class="header">
         <h2>Его благородию начальнику рабскому</h2>
-        <p><span class="form-field" contenteditable>[Должность руководителя]</span></p>
-        <p><span class="form-field" contenteditable>[Имя Отчество руководителя]</span></p>
-        <p>От раба божьего <span class="form-field" contenteditable>[Ваше имя]</span>,</p>
+        <p><span class="form-field" contenteditable data-placeholder="Должность руководителя"></span></p>
+        <p><span class="form-field" contenteditable data-placeholder="Имя Отчество руководителя"></span></p>
+        <p>От раба божьего <span class="form-field" contenteditable data-placeholder="Ваше имя"></span>,</p>
         <p>в труде земном пребывающего</p>
     </div>
 
-    <div class="decoration">❦</div>
+    <div class="decoration">❦ ❦ ❦</div>
     <div class="title">Челобитная</div>
 
     <div class="content">
         <p>Бью челом я, раб твой верный, со поклоном до земли сырой и молю твое начальское милосердие: не оставь просьбу мою без внимания.</p>
-        <p>Отпусти меня, слугу твоего трудолюбивого, на отдых душевный и телесный с <span class="form-field" contenteditable>[число]</span> месяца <span class="form-field" contenteditable>[название]</span> по <span class="form-field" contenteditable>[число]</span> месяца <span class="form-field" contenteditable>[название]</span> года господня, дабы сил набраться для новых трудов праведных, как пчела для мёда цветы облетает.</p>
+        <p>Отпусти меня, слугу твоего трудолюбивого, на отдых душевный и телесный с <span class="form-field" contenteditable data-placeholder="число"></span> месяца <span class="form-field" contenteditable data-placeholder="название"></span> по <span class="form-field" contenteditable data-placeholder="число"></span> месяца <span class="form-field" contenteditable data-placeholder="название"></span> года господня, дабы сил набраться для новых трудов праведных, как пчела для мёда цветы облетает.</p>
         <p>Во время отсутствия моего обязуюсь дела мирские уладить, дабы не осталось недоумений у собратьев моих по ремеслу.</p>
         <p>На отпуск сей согласен и печатью скреплён по уставу трудовому.</p>
     </div>
 
     <div class="signature-block">
-        <p>В надежде на милость твою<br>остаюсь с поклоном</p>
-        <p style="margin-top: 25px;"><span class="form-field" contenteditable id="current-date">[Дата составления]</span></p>
-        <p style="margin-top: 35px;">
-            <span class="signature-line"></span><br>
-            <strong>Подпись</strong> / <span class="form-field" contenteditable>[Ваше имя]</span>
-        </p>
+        <p class="closing-phrase">В надежде на милость твою<br>остаюсь с поклоном</p>
+        <div class="signature-row">
+            <div class="sig-date">
+                <span class="form-field" contenteditable id="current-date"></span>
+                <span class="sig-label">дата</span>
+            </div>
+            <div class="sig-sign">
+                <div class="sig-sign-line-row">
+                    <div class="sig-field-col">
+                        <span class="signature-line"></span>
+                        <span class="sig-label">подпись</span>
+                    </div>
+                    <div class="sig-field-col">
+                        <span class="form-field" contenteditable data-placeholder="Фамилия И.О."></span>
+                        <span class="sig-label">расшифровка</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="notes">
-        <h3>Примечания к заполнению:</h3>
-        <ul>
-            <li><strong>[Должность руководителя]</strong> - например, "начальнику отдела"</li>
-            <li><strong>[Имя Отчество руководителя]</strong> - в дательном падеже</li>
-            <li><strong>[Ваше имя]</strong> - в родительном падеже</li>
-            <li>Даты указываются в традиционном формате</li>
-            <li>Подпись ставится собственноручно</li>
-        </ul>
-    </div>
-
-    <div class="footer">
-        Сие челобитие составлено по канонам старинным, но с соблюдением законов трудовых.
-    </div>
+    <div class="footer"></div>
 </div>
 
-<div id="wordModal" class="modal">
+<div class="toolbar">
+    <button class="control-button" onclick="history.back()" style="background:#555; border-color:#333; margin-right:auto;">← Назад</button>
+    <button class="control-button print-button" onclick="printDocument()" title="Печать (Ctrl+P)">🖨️ Печать</button>
+    <button class="control-button save-button" onclick="saveForWord()">💾 Сохранить для Word</button>
+</div>
+
+<div class="notes">
+    <h3>Примечания к заполнению</h3>
+    <ul>
+        <li><strong>Должность руководителя</strong> — например, «начальнику отдела»</li>
+        <li><strong>Имя Отчество руководителя</strong> — в дательном падеже</li>
+        <li><strong>Ваше имя</strong> — в родительном падеже</li>
+        <li>Даты указываются в традиционном формате</li>
+        <li>Подпись ставится собственноручно</li>
+    </ul>
+</div>
+
+<div id="wordModal" class="modal" onclick="if(event.target===this)closeModal()">
     <div class="modal-content">
-        <h2 style="color:#8B4513; margin-bottom:15px; text-align:center;">Официальный формат для Word</h2>
-
-        <div class="word-preview" id="wordPreview">
-            <!-- Сюда вставляется форматированный текст -->
+        <h2 style="color:#8B4513; margin-bottom:12px; text-align:center;">Официальный формат для Word</h2>
+        <div class="word-preview" id="wordPreview"></div>
+        <div class="modal-actions">
+            <button class="control-button save-button" onclick="copyFormattedText()">📋 Скопировать текст</button>
+            <button class="control-button" onclick="closeModal()" style="background:#666; border-color:#444;">Закрыть</button>
         </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 15px;">
-            <button class="copy-button" onclick="copyFormattedText()">📋 Скопировать форматированный текст</button>
-            <button class="control-button" onclick="closeModal()" style="background:#666; flex:1;">Закрыть</button>
-        </div>
-
-        <div style="margin-top: 15px; padding: 10px; background: #f0f8ff; border-radius: 3px; font-size: 10pt;">
+        <div class="hint-box">
             <strong>Инструкция для Word:</strong><br>
             1. Вставьте скопированный текст в новый документ<br>
-            2. Установите шрифт "Times New Roman", размер 14pt<br>
+            2. Установите шрифт «Times New Roman», размер 14pt<br>
             3. Поля: верхнее 2 см, нижнее 2 см, левое 3 см, правое 1.5 см<br>
             4. Выравнивание по ширине, отступ первой строки 1.5 см
         </div>
     </div>
 </div>
+
 <script>
-    // Инициализация
     document.addEventListener('DOMContentLoaded', () => {
         initDate();
         initFields();
     });
 
-    // Автозаполнение даты
     function initDate() {
         const dateField = document.getElementById('current-date');
-        if (dateField?.textContent === '[Дата составления]') {
+        if (dateField && !dateField.textContent.trim()) {
             dateField.textContent = new Date().toLocaleDateString('ru-RU', {
                 day: 'numeric', month: 'long', year: 'numeric'
             });
         }
     }
 
-    // Инициализация полей ввода
     function initFields() {
         document.querySelectorAll('.form-field').forEach(field => {
-            field.addEventListener('focus', () => field.style.background = 'rgba(139, 69, 19, 0.05)');
-            field.addEventListener('blur', () => field.style.background = 'transparent');
             field.addEventListener('keydown', e => e.key === 'Enter' && e.preventDefault());
         });
     }
 
-    // Печать
-    function printDocument() {
-        window.print();
+    function printDocument() { window.print(); }
+
+    function getFieldValue(field) {
+        const t = field.textContent.trim();
+        return t || `[${field.dataset.placeholder || ''}]`;
     }
 
-    // Сохранение для Word с официальным форматированием
     function saveForWord() {
-        const fields = document.querySelectorAll('.form-field');
-        const data = Array.from(fields).map(field => field.textContent);
+        const fields = document.querySelectorAll('.a4-container .form-field');
+        const data = Array.from(fields).map(getFieldValue);
 
-        const formattedHTML = `
+        document.getElementById('wordPreview').innerHTML = `
             <div class="word-header">
                 <strong>Его благородию начальнику рабскому</strong><br>
                 ${data[0]}<br>
@@ -271,43 +484,31 @@
                 От раба божьего ${data[2]},<br>
                 в труде земном пребывающего
             </div>
-
-            <div style="text-align: center; margin: 20px 0; color: #8B4513;">❦</div>
-
-            <div class="word-title">ЧЕЛОБИТНАЯ</div>
-
+            <div style="text-align:center;margin:20px 0;color:#8B4513;">❦ ❦ ❦</div>
+            <div class="word-title">Челобитная</div>
             <div class="word-content">
                 <p>Бью челом я, раб твой верный, со поклоном до земли сырой и молю твое начальское милосердие: не оставь просьбу мою без внимания.</p>
-
                 <p>Отпусти меня, слугу твоего трудолюбивого, на отдых душевный и телесный с ${data[3]} месяца ${data[4]} по ${data[5]} месяца ${data[6]} года господня, дабы сил набраться для новых трудов праведных, как пчела для мёда цветы облетает.</p>
-
                 <p>Во время отсутствия моего обязуюсь дела мирские уладить, дабы не осталось недоумений у собратьев моих по ремеслу.</p>
-
                 <p>На отпуск сей согласен и печатью скреплён по уставу трудовому.</p>
             </div>
-
             <div class="word-signature">
                 <p>В надежде на милость твою<br>остаюсь с поклоном</p>
-
-                <p style="margin-top: 40px;">${data[7]}</p>
-
-                <p style="margin-top: 60px;">
+                <p style="margin-top:30px;">${data[7]}</p>
+                <p style="margin-top:40px;">
                     <span class="word-signature-line"></span><br>
                     <strong>Подпись</strong> / ${data[8]}
                 </p>
             </div>
         `;
-
-        document.getElementById('wordPreview').innerHTML = formattedHTML;
         document.getElementById('wordModal').style.display = 'flex';
     }
 
-    // Копирование форматированного текста для официального документа
     function copyFormattedText() {
-        const fields = document.querySelectorAll('.form-field');
-        const data = Array.from(fields).map(field => field.textContent);
+        const fields = document.querySelectorAll('.a4-container .form-field');
+        const data = Array.from(fields).map(getFieldValue);
 
-        const formattedText = `                                                      Его благородию начальнику рабскому
+        const text = `                                                      Его благородию начальнику рабскому
                                                       ${data[0]}
                                                       ${data[1]}
                                             От раба божьего ${data[2]},
@@ -344,22 +545,21 @@
     _________________________
     Подпись / ${data[8]}`;
 
-        navigator.clipboard.writeText(formattedText).then(() => {
+        navigator.clipboard.writeText(text).then(() => {
             alert('Официальный текст в формате документа скопирован в буфер обмена!');
         });
     }
 
-    // Закрытие модального окна
     function closeModal() {
         document.getElementById('wordModal').style.display = 'none';
     }
 
-    // Горячие клавиши
     document.addEventListener('keydown', e => {
         if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
             e.preventDefault();
             printDocument();
         }
+        if (e.key === 'Escape') closeModal();
     });
 </script>
 </body>

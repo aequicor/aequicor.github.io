@@ -34,8 +34,11 @@ header {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center 30%;
+    background: #f4f6f8;
     border: 3px solid #2c3e50;
     margin-bottom: 20px;
+    cursor: zoom-in;
 }
 
 h1 {
@@ -287,11 +290,28 @@ footer a {
 }
 
 .profile-img {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: width 0.55s cubic-bezier(.4,0,.2,1),
+                height 0.55s cubic-bezier(.4,0,.2,1),
+                border-radius 0.55s ease,
+                margin-left 0.55s cubic-bezier(.4,0,.2,1),
+                object-position 0.55s ease,
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
 }
-.profile-img:hover {
+.profile-img:not(.profile-img--expanded):hover {
     transform: scale(1.04) rotate(-2deg);
     box-shadow: 0 8px 24px rgba(52, 152, 219, 0.35);
+}
+.profile-img.profile-img--expanded {
+    width: min(100vw, calc(90vh * 727 / 637));
+    height: min(calc(100vw * 637 / 727), 90vh);
+    border-radius: 6px;
+    margin-left: calc(50% - min(50vw, calc(45vh * 727 / 637)));
+    object-fit: cover;
+    object-position: center;
+    transform: none;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.28);
+    cursor: zoom-out;
 }
 
 .lang-switch {
